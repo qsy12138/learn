@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>数组的slice和splice方法</title>
+</head>
+<body>
+    <script>
+        let arr = ["qian","si","yuan","1992","0730"];
+        //使用数组的splice方法，可以实现截取数据的功能，原数组会发生变化，同时也可以实现在数组任意位置添加数值的功能
+        arr.splice(2,0,"Terry");
+        console.table(arr);
+        //使用数组的slice方法，可以截取数组中的数据，但是原数组是不会改变的
+        let newArr = arr.slice(1,3);
+        console.table(newArr);
+        console.table(arr);
+
+        //一个关于splice的函数示例，实现功能：数组中数据位置的变换
+        function move(array,from,to){
+            if(from<0||to>array.length-1){
+                console.log("参数别瞎传")
+                return
+            }
+            //定义一个新数组，接受原来的值，不要去改变原数组的值
+            const newArray = [...array];
+            //从起始点开始查询，把要进行位置改变的元素取出来
+            let item = newArray.splice(from,1);
+            /*不进行替换，把之前取出来的元素放入到新的数组中，to表示添加的位置，0表示不进行替换，...item表示之前查询到的要进行改变位置的元素，
+            之所以使用展开的方法，因为之前截取到的是一个数组，如果不展开数组中的值，会在下面的方法中，赋值一个数组进去*/
+            newArray.splice(to,0,...item);
+            return newArray
+        };
+        let array = [1,2,3,4,5,6,7];
+        console.table(move(array,2,6));
+    </script>
+</body>
+</html>

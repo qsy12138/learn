@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>111</title>
+</head>
+<body>
+    <script>
+        //实现类似于数组indexOf的功能
+        let array = [1,2,3,4,5,"asdasd"];
+        function fun(arr,item) { 
+            for(let i=0;arr.length;i++){
+                if(arr[i]==item){
+                    return i;
+                }else if(i>arr.length){
+                    return -1
+                }
+            }
+            // for(let i=0;arr.length;i++){
+            //     if(arr[i]===item){
+            //         return i;
+            //     }else if(i===arr.length-1){
+            //         console.log(i);
+            //         return -1
+            //     }
+            // }
+         }
+        console.log(fun(array,"asdasd"))
+    </script>
+</body>
+</html>

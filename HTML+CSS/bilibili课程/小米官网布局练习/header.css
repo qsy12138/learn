@@ -1,0 +1,141 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.header{
+    width: 375px;
+    height: 74px;
+    background-color: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+.header .headerTop{
+    width: 375px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 100;
+    background-color: #f2f2f2;
+}
+.headerTop .logo{
+    width: 52px;
+    height: 44px;
+    background-image: url(img/xmLogo.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 25px auto;
+}
+.headerTop .user{
+    width: 52px;
+    height: 44px;
+    background-image: url(img/user.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 25px auto;
+}
+.headerTop .searchInput{
+    flex: 1;
+    height: 33px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #e5e5e5;
+    background-color: #fff;
+}
+.searchInput .icon{
+    width: 31px;
+    height: 31px;
+    background-image: url(img/xmsearch.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+}
+.searchInput input{
+    width: 100%;
+    border: none;
+    outline: none;
+}
+.headerNav{
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+.headerNav>a{
+    text-decoration: none;
+    font-size: 14px;
+    color: #747474;
+    align-self: stretch;
+    padding-top: 4px;
+}
+.headerNav .xh{
+    width: 20px;
+    height: 20px;
+    background-image: url(img/xh.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    position: relative;
+    z-index: 100;
+}
+.headerNav .xhk{
+    width: 100vw;
+    height: 0vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    transform: all 0.3s;
+}
+#choose:checked~.xhk{
+    height: 100vh;
+}
+#choose:checked~.xh{
+    transform: rotate(180deg);
+}
+.xhk .xhkmain{
+    position: absolute;
+    left: 0;
+    top: 44px;
+    width: 375px;
+    height: 130px;
+    background-color: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+}
+.xhkmain .xhkTop{
+    width: 375px;
+    height: 30px;
+    display: flex;
+    align-items: flex-end;
+    padding-left: 12px;
+    color: #3c3c3c;
+    font-size: 14px;
+}
+.xhkmain .xhkList{
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 14px;
+    align-content: space-evenly;
+}
+.xhkList>a{
+    width: 80px;
+    height: 30px;
+    border: 1px solid #e5e5e5;
+    background-color: #fff;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 30px;
+    color: #3c3c3c;
+    text-decoration: none;
+    margin: 0 10px 10px 0;
+}

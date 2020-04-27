@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>模拟new</title>
+</head>
+<body>
+    <script>
+        function create() { 
+            var obj = {};
+            var Con0 = Array.from(arguments);
+            var Con = Con0.shift();
+            //var Con = [].shift.call(arguments);//让伪数组arguments中的this指向数组，使它能够使用数组的shift方法，并获取到第一个参数，也就是当前的构造函数Car
+            console.log(Con)
+            obj.__proto__ = Con.prototype;
+            var result = Con.apply(obj,Con0)//让传入的构造函数中的this，指向obj，让obj继承到构造函数的属性，这样obj就能访问到构造函数中的属性了
+            console.log(obj)
+            return result instanceof Object?result:obj//此时obj已经指向构造函数了，构造函数中定义了什么属性，obj就能访问什么属性，这一步是设置返回值，如果构造函数中有一个对象返回，则返回这个对象
+         };
+
+        function Car(color,price) { 
+            this.color = color;
+            this.price = price
+        };
+        Car.prototype.start = function () { 
+              console.log("车的颜色是"+this.color+'价格'+this.price)
+           };
+        // function Person(name) { 
+        //     this.name = name;
+        // };
+        // Person.prototype.start = function () { 
+        //       console.log("我的名字是"+this.name)
+        //    };
+        var car = create(Car,'black','55万');
+        car.start()
+        //var per = create(Person,'钱思远');
+       // per.start()
+    </script>
+</body>
+</html>

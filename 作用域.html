@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>作用域</title>
+    </head>
+    <body>
+        <script>
+            // var a = "我是外层变量";
+            // function fun(){
+            //     var b="我是内层变量";
+                
+            //     function inner() { 
+            //         console.log(b)
+            //      };
+            //      //return inner;
+            // }
+            // var c = fun();
+            //c()
+            //console.log(c)
+            // function people(name){
+            //     console.log(name)
+            // }
+            // var p = people();
+            // //console.log(p())
+            // p("AAA")
+            // var a = "我是外层变量";
+           
+            // function fun(){
+            //     var b="我是内层变量";
+            //     function inner() { 
+            //         return b
+            //      };
+            //      return inner
+            // }
+            // var c = fun()();
+            // console.log(c)
+            
+        //     var d = "我是外层变量";
+        //     function inner(a) { 
+        //         console.log(a)
+        //          };
+        //     function fun(){
+        //         var b="我是内层变量";
+        //         inner(b)
+        //         console.log(b)
+        //     }
+        //    fun();
+        function Person(name) { 
+            this.name = name;
+         };
+         Person.prototype.age = 10;
+         function Per() { 
+             //this.name="111"
+          }
+          Per.prototype = new Person();
+          var per1 = new Per();
+          var per2 = new Per();
+          per1.__proto__.age = 11;
+          console.log(Array())
+        </script>
+    </body>
+</html>

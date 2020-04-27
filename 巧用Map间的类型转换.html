@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>巧用map和其他类型的类型转换</title>
+</head>
+<body>
+    <script>
+        let hd = new Map([["Terry","100"],["张三","95"],["Mike","85"]]);
+        let array = [...hd].filter(function(item){
+            return item.includes('95');
+        });
+        let newmap = new Map(array);
+        console.log(newmap);
+    </script>
+</body>
+</html>

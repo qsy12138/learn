@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>类型之间互相转换</title>
+</head>
+<body>
+    <script>
+        let hd = new Set("123456")
+        let arr = [...hd].filter(function(item){
+            return item>5;
+        })
+        hd = new Set(arr);
+        console.log(hd);
+
+        //使用set进行数组去重
+        let array = [1,2,1,1,"qian","qian"];
+        let newArray = [...new Set(array)];
+        console.log(newArray);
+        let a = "123456";
+        console.log([...a]);
+        let z = {name:"qian"};
+        let y = z;
+        y.name = "si"
+        console.log(z.name);
+        var c = 3;
+        function fun(c){
+           return c = c+1
+        }
+        fun(c)
+        console.log(fun(c))
+        console.log(Date.prototype)
+    </script>
+</body>
+</html>

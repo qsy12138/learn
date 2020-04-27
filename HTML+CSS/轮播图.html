@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul class="nav">
+        <li><a href=""><img src="./img/0.jpg"></a></li>
+        <li><a href=""><img src="./img/1.jpg"></a></li>
+        <li><a href=""><img src="./img/2.jpg"></a></li>
+        <li><a href=""><img src="./img/4.jpg"></a></li>
+        
+        <div class="point-list" id="point">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+        </div>
+    </ul>
+</body>
+<style>
+    .nav{
+        list-style-type:none;
+        width: 590px;
+        height: 470px;
+        margin: 0 auto;
+        position: relative;
+    }
+    img{
+        width: 590px;
+        height: 470px;
+    }
+    .nav li{
+        position: absolute;
+    }
+    .nav li:nth-child(1){
+        z-index: 1;
+    }
+    .point-list{
+        position: absolute;
+        z-index: 9999;
+        bottom: 20px;
+        left: 70px;
+    }
+    .point-list i{
+        float: left;
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.6);
+        margin-left: 5px;
+    }
+</style>
+<script>
+    var select = document.getElementsByTagName("i");
+    var seleli = document.getElementsByTagName("li");
+    for(let i = 0;i<select.length;i++){
+        select[i].onmouseover = function(){
+            for(let j = 0;j<seleli.length;j++){
+                seleli[i].style.zIndex =1;
+                seleli[j].style.zIndex =0;
+            }
+        }
+        
+    }
+    setInterval(function(){
+        for(let i = 0;i<select.length;i++){
+            for(let j = 0;j<seleli.length;j++){
+                seleli[i].style.zIndex =1;
+                seleli[j].style.zIndex =0;
+            }
+        
+        
+    }
+    },3000)
+</script>
+</html>

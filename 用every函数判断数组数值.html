@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>使用every函数对数组的值进行判断</title>
+</head>
+<body>
+    <input type="text" name="title">
+    <span></span>
+</body>
+<script>
+    let arr = [{name:"张三",js:'95'},
+               {name:"李四",js:'90'},
+               {name:"王五",js:'55'}];
+    let newArr = arr.every(function(item){
+        return item.js>60;
+    });
+    console.log(newArr);
+    console.log(newArr?'全部及格':'有同学没及格');
+
+    //every和some的区别，every要保证每个都包涵才会返回true，而some只要一个符合要求就会返回true
+    let keyWords = ["php","js"];
+    let title = document.querySelector('[name="title"]');
+    //监听一个键盘抬起的事件
+    title.addEventListener("keyup",function(){
+       const res =  keyWords.some(keyWord =>{
+            return this.value.indexOf(keyWord)!= -1;
+        });
+        if(res==false){
+            document.querySelector('span').innerHTML = 
+            "必须包涵"+keyWords.join(",")+"关键字"
+        }else{
+            document.querySelector('span').innerHTML = ""
+        }
+    })
+</script>
+</html>

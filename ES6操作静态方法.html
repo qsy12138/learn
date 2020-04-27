@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>操作静态方法</title>
+</head>
+<body>
+    <script>
+        // function Animal(type) { 
+        //     this.type = type;
+        //  }
+        //  Animal.prototype.eat = function () { 
+        //      return this.type;
+        //   }
+        class Animal{
+            constructor(type){
+                this.type = type;
+            }
+            eat(){
+                Animal.walk();//在这里可以访问到类的实例方法
+                return this.type;
+            }
+            static walk(){
+                console.log("AAAAAA");//静态方法，该方法只有类可以访问，任何new出的实例都无法访问这个方法
+            }
+        }
+    </script>
+</body>
+</html>

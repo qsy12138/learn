@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="outer">
+        <ul id="imgList">
+            <li><img src="./img/0.jpg" alt=""></li>
+            <li><img src="./img/2.jpg" alt=""></li>
+            <li><img src="./img/3.jpg" alt=""></li>
+            <li><img src="./img/4.jpg" alt=""></li>
+        </ul>
+        <div id="nav">
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
+    </div>
+</body>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #outer{
+        width: 590px;
+        height: 470px;
+        margin: 60px auto;
+        overflow: hidden;
+        position: relative;
+    }
+    #imgList{
+        list-style: none;
+        position: absolute;
+    }
+    #imgList li{
+        float: left;
+    }
+    #nav{
+        position: absolute;
+        bottom: 20px;
+    }
+    #nav a{
+        float: left;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: red;
+        margin-left: 5px;
+    }
+</style>
+<script>
+    window.onload = function(){
+        autoChange();
+        var outer = document.getElementById('outer');
+        var imgList = document.getElementById('imgList');
+        var imgArr = document.getElementsByTagName('img');
+        var nav = document.getElementById('nav');
+        var allA = document.getElementsByTagName('a');
+        imgList.style.width = imgArr.length*590+"px";
+        nav.style.left = (outer.offsetWidth-nav.offsetWidth)/2+"px";
+        var index = 0;
+        allA[index].style.backgroundColor = "black";
+        for(let i=0;i<allA.length;i++){
+            allA[i].num = i
+            allA[i].onclick = function(){
+                index = this.num;
+                imgList.style.left = -590*index+"px";
+                changeAcolor();
+            }
+        }
+        
+        function changeAcolor() { 
+            for(let i=0;i<allA.length;i++){
+                allA[i].style.backgroundColor='';
+            }
+            allA[index].style.backgroundColor='black';
+         }
+        function autoChange() { 
+            setInterval(() => {
+                index++;
+                index %= imgArr.length;
+                imgList.style.left = -590*index+"px";
+                changeAcolor()
+            }, 3000);
+         }
+    }
+</script>
+</html>

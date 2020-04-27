@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>vue的样式绑定</title>
+        <script src="./vue.js"></script>
+        <style>
+            .activited{
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app" :class="{activited:isActivited}" @click="handleClick">Hello Word</div><!--class的对象绑定-->
+        <script>
+            var vm = new Vue({
+                el:'#app',
+                data:{
+                    isActivited:false
+                },
+                methods: {
+                    handleClick:function(){
+                        this.isActivited = !this.isActivited
+                    }
+                },
+            })
+        </script>
+    </body>
+</html>

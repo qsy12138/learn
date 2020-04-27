@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>使用set处理网站关键字</title>
+</head>
+<body>
+    <input type="text" name="hd"/>
+    <ul></ul>
+    <script>
+        let obj={
+            data:new Set(),//申明data为set类型，让data中的值都是唯一数值不能重复
+            set keyword(word){
+                this.data.add(word);//表示把输入的值add到data中
+            },
+            show(){//定义一个show方法，该方法的作用是将输入的关键字放到ul中
+                let ul = document.querySelector('ul');
+                ul.innerHTML = '';
+                this.data.forEach(function(value){
+                    ul.innerHTML+=`<li>${value}</li>`
+                });
+            }
+        };
+        let input = document.querySelector('[name="hd"]');
+        input.addEventListener("blur",function(){
+            obj.keyword = this.value;
+            obj.show()
+        })
+        
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>事件修饰符</h1>
+        <div style="width:200px;height:200px;background:red" @click="test">
+            <div style="width:100px;height:100px;background:blue" @click.stop="test2"></div>
+        </div>
+        <a href="http://www.baidu.com" target="_blank" @click.prevent="test3">百度一下</a>
+        <h1>按键修饰符</h1>
+        <input type="text" @keyup.enter="test4">
+    </div>
+</body>
+<script src="D:\vue课程练习\vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+
+        },
+        methods: {
+            test(){
+                
+                alert('111')
+            },
+            test2(){
+                //阻止事件冒泡
+                //在@click上加上.stop
+                alert('222')
+            },
+            test3(){
+                //阻止事件的默认行为
+                //在@click上加上.prevent
+                alert('333')
+            },
+            test4(event){
+                //需要当按enter键的时候才会弹出这个值，在@keyup上加入.enter
+               alert(event.target.value) 
+            }
+        },
+    })
+</script>
+</html>

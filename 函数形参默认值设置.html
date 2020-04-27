@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>形参默认值</title>
+</head>
+<body>
+    <script>
+        // //es5设置形参默认值
+        // function fun(x,y,z){
+        //     if(y === undefined){
+        //         y=2
+        //     }
+        //     if(z === undefined){
+        //         z = 42
+        //     }
+        //     return x+y+z
+        // }
+        // console.log(fun(1))
+        
+        // //es6设置形参默认值
+        // function foo(a,b=7,c=40) {//在es6中可以直接在形参中进行参数赋值，表明设置形参的默认值 
+        //     return a+b+c
+        //  }
+        // console.log(foo(1,undefined,45))//如果需要修改形参默认值，直接在实参中写值就可以了，如果不变默认值，需要写一个undefined
+        
+        //模拟new
+        function create() { 
+            var obj = {};
+            console.log(arguments)//截取之前的参数
+            var Con = [].shift.call(arguments);
+            //var Con = Array.from(arguments).shift();
+            obj.__proto__ = Con.prototype;
+            console.log(arguments)//截取之后的参数
+            var result = Con.apply(obj,arguments);
+            console.log(obj)
+            return result === Object?result:obj;
+         }
+         function Person(name){
+              this.name = name
+         }
+         Person.prototype.callName = function () { 
+             return this.name
+         }
+         var p1 = create(Person,"钱思远");
+         var a = p1.callName();
+         console.log(a);
+        
+        //箭头函数实现数组的排序
+        var arr = [1,4,7,2,0,3,5]
+        let fun = arr=>{
+             let c = arr.sort()
+             return c
+        }
+        console.log(fun(arr))
+        
+        function foo (a,b,c) { 
+             [].shift.call(arguments)
+             return arguments
+         }
+         console.log(foo(1,2,3))
+
+         let s = [1,2,3,1,4,3]
+         //let s1 = new Set(s)
+         //let s1 = [...new Set(s)]
+         //var d = [...s1]
+
+        //  console.log(s1.size)
+        //  var obj = {
+        //      name:"123",
+        //      age:28,
+        //      gender:"168cm",
+        //      weight:"55kg"
+        //  }
+         let obj1 = new Map(s)
+         console.log(obj1)
+        //  for(let item in obj){
+        //     var key =  item
+        //     console.log(obj[key])
+        //  }
+         
+    </script>
+</body>
+</html>

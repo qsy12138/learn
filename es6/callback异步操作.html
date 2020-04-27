@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>异步操作和回调</title>
+</head>
+<body>
+    <script>
+        //回调函数
+        // function loadScript(src,callback) { 
+        //     let script = document.createElement('script');
+        //     script.src = src;
+        //     script.onload = () => {
+        //         callback()
+        //     }
+        //     document.head.append(script)
+        //  };
+        //  function test() { 
+        //      console.log('让他异步')
+        //   }
+        //  loadScript('1.js',test);
+        //  //test()
+        
+        //  //回调地狱
+        //  function loadScript(src,callback) { 
+        //     let script = document.createElement('script');
+        //     script.src = src;
+        //     script.onload = () => {
+        //         callback()
+        //     }
+        //     document.head.append(script)
+        //  };
+        // function foo(value){
+        //     console.log(value)
+        // };
+        // function sleep(ms) {
+        //     return new Promise(function(resolve, reject) {
+        //         console.log('tag')
+        //         setTimeout(resolve, ms);
+        //     })
+        // }
+        // sleep(2000).then(()=> console.log("finished"));
+        
+        // function test(resolve,reject) { 
+        //     var timeOut = Math.random()*2;
+        //     console.log('set timeout to:'+timeOut+'seconds');
+        //     setTimeout(function () { 
+        //         if(timeOut<1){
+        //             //console.log("call resolve()...");
+        //             resolve("resolve成功")
+        //         }else{
+        //             //console.log("call reject()...");
+        //             reject('timeout in ' + timeOut + ' seconds.')
+        //         }
+        //      },timeOut*1000)
+        //  }
+        //  new Promise(test).then(function (result) { //promise的then当中要传递两个函数作为参数，一个代表resolve一个代表reject，resolve必填
+        //      console.log('成功：'+result)
+        //   }).catch(function(reason){
+        //       console.log('失败：'+reason)
+        //   })
+        // var arr = [1,2,3,4]
+        // function sleep(ms) {
+        //     console.log('aaa') 
+        //     return new Promise((resolve,reject)=>{
+        //         setTimeout(function(){
+        //             console.log('111');
+        //             resolve()
+        //         },ms)
+        //     })
+        //  }
+        //  sleep(2000)
+        //  .then(()=>{console.log("bbb")})
+        //  .then(()=>{console.log('ccc')})
+        // function foo() {
+        //     console.log('aaa')
+        //   }
+        // function fun(){
+        //     foo()
+        //     console.log('bbb')
+        // }
+        // fun();
+        // function test(a,b) { 
+        //     console.log(a+b);
+        //  }
+         function fun(value1,value2) { 
+            return new Promise((resolve,reject)=>{
+                if(value1+value2==3){
+                    setTimeout(function () { 
+                        var d = value1+value2 
+                        resolve(d)
+                     },2000)
+                }else{
+                    reject(new Error("错误"))
+                }
+                
+            }) 
+             
+          }
+          fun(2,2)
+          .then((value)=>{
+              console.log('我是：'+value);
+              return fun(1,2)
+          })//then()方法中，有两个函数作为参数，这两个函数视为回调函数，该回调函数可以是匿名的，函数的形参的值，就是resolve()括号中的值
+          .then((value)=>{console.log('我是：'+value)})
+    </script>
+</body>
+</html>

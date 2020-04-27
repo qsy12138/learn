@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>组件绑定原生事件</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <child @click.native="handleClick"></child><!--此时在child上绑定一个@click事件时，在父组件的methods中是无法触发该事件的，因为这是一个自定义事件，需要在子组件中定义一个@click事件
+            并使用this.$emit将该事件传递出来，父组件才能接受并在methods中触发该事件-->
+        <!--如果想让改事件变成直接可在父组件中触发，需要在@click后加一个.native将该事件变为原生事件-->
+    </div>
+    <script>
+        Vue.component('child',{
+            template:'<div>hello</div>'
+        })
+
+        var vm = new Vue({
+            el:'#app',
+            methods: {
+                handleClick:function(){
+                    alert('click')
+                }
+            },
+        })
+    </script>
+</body>
+</html>

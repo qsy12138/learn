@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p ref="content">内置指令</p>
+        <button @click="hint">提示</button>
+    </div>
+    <script src="D:\vue课程练习\vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data() {
+                return {
+                    
+                }
+            },
+            methods: {
+                hint(){
+                    alert(this.$refs.content.textContent)
+                }
+            },
+        })
+    </script>
+</body>
+</html>

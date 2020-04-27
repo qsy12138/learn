@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>使用filter过滤数组中的数值</title>
+</head>
+<body>
+    <script>
+        let arr = [{name:'响应式布局',title:'css'},
+                   {name:'弹性盒布局',title:'css'},
+                   {name:'存储过程',title:'oracle'}];
+        //使用filter函数可以筛选出数组中需要的值
+        let newArr = arr.filter(function(arr){
+            //筛选出数组中title为css的值，并自动拼接为新数组
+            return arr["title"] == "css"
+        });
+        console.table(newArr);
+
+        //自定义一个过滤函数
+        let hd = [1,2,3,4,5];
+        function filter(array,callback) {
+            let newArray = [];
+            for (const value of array) {
+                //console.log(expect.includes(value))
+                if(callback(value)==true){
+                    newArray.push(value)
+                }
+            }
+            return newArray;
+          }
+        console.table(filter(hd,function(value){
+            return value>2;
+        }))
+    </script>
+</body>
+</html>

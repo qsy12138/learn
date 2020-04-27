@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>获取商品价格大于1万的商品的名称</title>
+</head>
+<body>
+    <script>
+        let cart = [{name:"iphone",price:"12000"},
+        {name:"imac",price:"25000"},
+        {name:"ipad",price:"2000"}]
+        function getNamePrifce(goods,price){
+            return goods.reduce(function (arr,cur) { 
+                if(cur.price>price){
+                     arr.push(cur)
+                };
+                return arr;
+             },[]).map(function(item){
+                 return item.name;
+             })
+        }
+        console.table(getNamePrifce(cart,10000));
+
+        let set = new Set([1,"1",2,"2"]);
+        console.log(set)
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>转换时间格式的函数封装</title>
+</head>
+<body>
+    <script>
+        const time = new Date();
+        function dateFormate(date,formate='YYYY-MM-DD'){
+            const config={
+                YYYY:date.getFullYear(),//年
+                MM:date.getMonth()+1,//月
+                DD:date.getDate()//日
+            };
+            //使用for-in循环，循环出config里面的值
+            
+            for(let key in config){
+                //将参数传递的format的YYYY、MM、DD分别替换为当前的年、月、日如2020、3、6
+                formate = formate.replace(key,config[key])
+                console.log(key)
+                //console.log(config[key])
+                //console.log(formate)
+            }
+            //return config;
+            return formate;
+        }
+        console.log(dateFormate(time))
+    </script>
+</body>
+</html>

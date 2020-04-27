@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>样式绑定-style绑定</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app" :style="charColor" @click="handleClick">Hello World</div>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                //绑定style的时候，需要使用对象键值对。
+                charColor:{
+                    color:'black',
+                    fontSize:'20px'
+                    }
+            },
+            methods: {
+                handleClick:function(){
+                    this.charColor.color = this.charColor.color==='black'?'red':'black';
+                    this.charColor.fontSize = this.charColor.fontSize==='20px'?'500px':'20px'
+                }
+            },
+        })
+    </script>
+</body>
+</html>

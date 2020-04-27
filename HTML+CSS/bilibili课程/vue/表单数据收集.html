@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <form>
+            <span>用户名：</span>
+            <input type="text" v-model="userName"><br>
+
+            <span>密码：</span>
+            <input type="password" v-model="psw"><br>
+
+            <span>性别：</span>
+            <input type="radio" id="female" value="女" v-model="gender">
+            <lable for="female">女</lable>
+            <input type="radio" id="male" value="男" v-model="gender">
+            <lable for="male">男</lable><br>
+
+            <span>爱好：</span>
+            <input type="checkbox" id="basket" value="basket" v-model="likes">
+            <lable for="basket">篮球</lable>
+            <input type="checkbox" id="foot" value="foot" v-model="likes">
+            <lable for="foot">足球</lable><br>
+            
+            <span>城市：</span>
+            <select v-model="cityId">
+                <option value="">未选择</option>
+                <option :value="item.id" v-for="(item,index) in citys" :key="index">{{item.name}}</option>
+            </select><br>
+            <span>介绍：</span>
+            <textarea rows="10"></textarea><br>
+
+            <input type="submit" value="注册">
+        </form>
+    </div>
+    <script src="D:\vue课程练习\vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                userName:'',
+                pwd:'',
+                gender:'女',
+                likes:['basket'],
+                citys:[{id:1,name:'北京'},{id:2,name:'上海'},{id:3,name:'深圳'}],
+                cityId:'2'
+            }
+        })
+    </script>
+</body>
+</html>

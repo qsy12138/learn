@@ -1,0 +1,185 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: rgb(245, 245, 245);
+}
+.swiper{
+    width: 375px;
+    height: 188px;
+    background-image: url(./img/lunbo1.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin-top: 70px;
+}
+.iconList{
+    width: 375px;
+    height: 160px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.iconList .iconItem{
+    width: 20%;
+    height: 80px;
+}
+.iconItem>img{
+    width: 100%;
+    height: 100%;
+}
+/* banner样式 */
+.banner{
+    width: 375px;
+    height: 265px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+}
+.banner .bannerleft{
+    width: 186px;
+    height: 265px;
+    background-image: url(./img/mian1.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.banner .bannerright{
+    width: 186px;
+    height: 265px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.bannerright .barTop{
+    width: 186px;
+    height: 131px;
+    background-image: url(./img/mian2.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.bannerright .barBot{
+    width: 186px;
+    height: 131px;
+    background-image: url(./img/mian3.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+/* 每日精选 */
+.jx{
+    margin-top: 8px;
+    width: 375px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 52px;
+}
+.jx .jxTop{
+    width: 375px;
+    height: 230px;
+    background-image: url(./img/jxTop.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.jx .jxBot{
+    width: 375px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.jxBot .jxList{
+    width: 50%;
+    height: 253px;
+    padding: 3px 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+}
+.jxList img{
+    width: 100%;
+    height: auto;
+}
+.jxList .title{
+    padding-top: 5px;
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 15px;
+}
+.jxList .brice{
+    color: rgba(0,0,0,.54);
+    font-size: 12px;
+}
+.jxList .price{
+    font-size: 15px;
+    color: #ea625b;
+}
+.jxList .buybtn{
+    width: 104px;
+    height: 31px;
+    font-size: 13px;
+    border: 1px solid;
+    background-color:#ea625b ;
+    color: #fff;
+    text-align: center;
+    line-height: 31px;
+    border-radius: 4px;
+}
+/* 页脚 */
+.footer{
+    width: 375px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background-color: #fff;
+    box-shadow: 0 -2px 10px #ccc;
+}
+.footer .flist{
+    height: 39px;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.footer span{
+    margin-top: 2px;
+    font-size: 12px;
+    color: #999999;
+}
+.footer .ficon{
+    width: 21px;
+    height: 21px;
+    background-size: 100%;
+}
+.footer .flist:nth-child(1) .ficon{
+    background-image: url(./img/home1.png);
+    background-position: center;
+    background-repeat: repeat;
+}
+.footer .flist:nth-child(2) .ficon{
+    background-image: url(./img/fenlei.png);
+    background-position: center;
+    background-repeat: repeat;
+}
+.footer .flist:nth-child(3) .ficon{
+    background-image: url(./img/world.png);
+    background-position: center;
+    background-repeat: repeat;
+}
+.footer .flist:nth-child(4) .ficon{
+    background-image: url(./img/cart.png);
+    background-position: center;
+    background-repeat: repeat;
+}
+.footer .flist:nth-child(5) .ficon{
+    background-image: url(./img/user.png);
+    background-position: center;
+    background-repeat: repeat;
+}

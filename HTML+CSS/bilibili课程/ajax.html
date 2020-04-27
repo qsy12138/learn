@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var xhr = new XMLHttpRequest()
+        xhr.open("GET","https://haokan.baidu.com/videoui/api/hotwords")
+        xhr.send()
+        xhr.onreadystatechange = () => {
+            if(xhr.status==200){
+                console.log(xhr)
+                var res = xhr.response;
+                var h1 = document.createElement('h1');
+                h1.innerHTML = res
+                document.body.appendChild(h1)
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="picture">
+
+    </div>
+</body>
+<style>
+    .picture{
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        background-color: pink;
+        animation-name: donghua;
+        animation-duration: 3s;/*设置动画时间周期 */
+        animation-timing-function: cubic-bezier(0.63, 0, 0.62, 1.57);/*设置动画变换速度 */
+        animation-iteration-count: infinite;  /*设置动画循环次数 */
+        animation-direction: alternate;/*设置动画往返运动 */
+    }
+    @keyframes donghua{
+        0%{
+            transform: translate(0,0);
+        }
+        33.3%{
+            transform: translate(500px,0);
+        }
+        100%{
+            transform: translate(500px,300px);
+        }
+    }
+</style>
+</html>

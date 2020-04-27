@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        在网页中，如果某个元素的样式是动态变化的
+        可以使用 v-bind:class 或者 v-bind:style，来实现这样的效果
+
+        class的绑定：
+            - v-bind:class="data中的属性名"或者:class="data中的属性名"
+            - data中的属性名需要对应上一个class名作为属性值
+            - 也可以使用对象绑定的方法
+                - :class = {类名:data中的变量名}
+        style的绑定:
+            - :style = {xxx:xxx}
+     -->
+    <div id="app">
+        <h2>1、class绑定</h2>
+            <p :class="a">当XXX为字符串的时候</p>
+            <p :class="{aClass:isA,bClass:isB}">当XXX为对象的时候</p>
+        <h2>2、style绑定</h2>
+        <p :style="{color:fontcolor,fontSize:fs}">style绑定</p>
+        <button @click="update">更新</button>
+    </div>
+    <style>
+        .aClass{
+            color: red;
+        }
+        .bClass{
+            color: skyblue;
+            font-size: 50px;
+        }
+    </style>
+    <script src="D:\vue课程练习\vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                a:'aClass',
+                isA:true,
+                isB:false,
+                b:'bClass',
+                fontcolor:'red',
+                fs:"20px"
+            },
+            methods: {
+                update(){
+                    if(this.a=='aClass'){
+                        this.a = 'bClass'
+                        this.isA = false
+                        this.isB = true
+                    }else{
+                        this.a = 'aClass'
+                        this.isA = true
+                        this.isB = false
+                    }
+                    if(this.fontcolor==='red'&&this.fs==='20px'){
+                        this.fontcolor = 'black'
+                        this.fs = '50px'
+                    }else{
+                        this.fontcolor = 'red'
+                        this.fs = '20px'
+                    }
+                }
+            },
+        })
+    </script>
+</body>
+</html>

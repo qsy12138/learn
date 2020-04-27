@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>类的继承</title>
+</head>
+<body>
+    <script>
+        //es5的继承
+        function Animal(type) {//父类
+            this.type = type;
+         };
+        Animal.prototype.eat=function () { 
+            console.log('吃食物')
+          };
+        function Dog(){//子类
+            Animal.apply(this,arguments)//继承构造函数中的属性和方法
+            //Dog拿到了Animal的this.type = type;同时，用自身的参数作为实参传递给Animal
+        };
+        Dog.prototype = Animal.prototype;//继承原型对象上的属性和方法
+        let dog = new Dog("小狗");
+        dog.eat();
+        console.log(dog.type)
+        
+        //es6的继承
+        let _age = 28
+        class Person{//父类
+            constructor(name){
+                this.name = name
+            }
+            callName(){
+                return this.name
+            }
+            get age(){
+                return _age
+            }
+            set age(value){
+                if(value>0 && value<100)
+                _age = value
+            }//set get方法可以设置个可修改的属性
+        }
+
+        class Chinese extends Person {//子类
+            constructor(name,height){
+                super(name);//使用super表示获取父类的构造函数的属性和方法
+                this.height = height;//如果需要定义子类的方法，那么必须写上一个super表示先拿到父类的构造函数中的属性和方法
+            }
+        };
+        var dell = new Chinese("Dell","168CM");
+        var a = dell.age = 50;
+        var b = dell.callName()
+        console.log('我的名字是'+b+'年龄'+a+'身高'+dell.height)
+        var lisi = new Chinese("lisi","168CM");
+        console.log(lisi.age)
+    </script>
+</body>
+</html>

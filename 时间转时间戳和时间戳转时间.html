@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>时间和时间戳之间的转换</title>
+</head>
+<body>
+    <script>
+        const date = new Date();
+        //时间转时间戳
+        console.log(date*1);
+        console.log(Number(date));
+        console.log(date.getTime());
+        //时间戳转时间
+        const timestamp = date.getTime();
+        console.log(new Date(null))//如果后台传给前端的是时间戳，可以使用该方法将时间戳转换为时间
+        if(!(b in window)){
+            var b=1;
+        }
+        console.log(b)
+
+        function Fun (){
+
+        }
+        
+        var z = new Fun()
+        console.log(z.__proto__===Fun.prototype)
+
+        var a = new Array()
+        console.log(a.__proto__)
+
+        function fun(value,value2){
+            alert(value);
+            alert(value2);
+        }
+        function fun2(callback,val,val2){
+            alert("我是主体函数");
+            callback(val,val2);
+        }
+        fun2(fun,"我是回调函数的第一个参数","我是回调函数的第二个参数");
+
+        
+    </script>
+</body>
+</html>

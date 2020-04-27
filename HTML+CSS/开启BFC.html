@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+        <div class="inner"></div>
+    </div>
+</body>
+<style>
+    .main{
+        border: 5px red solid;
+        background-color: black;
+        overflow: hidden;/*开启BFC*/
+    }
+    .inner{
+        background-color: yellow;
+        width: 200px;
+        height: 500px;
+        float: right;
+    }
+</style>
+</html>

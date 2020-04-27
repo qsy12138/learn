@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>使用Map操作DOM节点</title>
+</head>
+<body>
+    <div name="后盾人">houdunren.com</div>
+    <div name="开源内容管理系统">houdunren.com</div>
+</body>
+<script> 
+    /*整个方法的实现思路：
+    1、用new Map的形式定义一个map变量
+    2、找到所有的div，并将其遍历出来
+    3、将遍历出的div，塞入到map中，item作为键，也就是div元素，item后面是map值，采用对象的形式，该对象键为content，值为div元素的属性name
+    4、遍历map，
+    */
+    let map = new Map();
+    document.querySelectorAll("div").forEach(function(item){//获取到DOM上的所有div，将div元素进行遍历
+        console.log(item);
+        map.set(item,{
+            content:item.getAttribute("name")//将遍历出的div元素set到map中，然后获取到div的属性name，并与content组成键值对对象
+        });
+        console.log(map)
+    });
+    map.forEach(function(config,elem){//将新生成的map进行遍历
+        elem.addEventListener("mouseover",function(){//对遍历出的map中的键（也就是houdunren.com）加入click事件，触发点击时弹出div的name
+            console.log(elem)
+            alert(config.content)
+        })
+        elem.onclick = function () { 
+            alert(config.content)
+         }
+    })
+    var a = [{name:"qian"},{name:"si"},{name:"yuan"},{name:"li"},{name:"si"}];
+    // a.forEach((value1,value2)=>{
+    //     console.log(value1)
+    // })
+    for(let i=0;i<a.length;i++){
+       console.log(a[i].name) 
+    }
+</script>
+</html>

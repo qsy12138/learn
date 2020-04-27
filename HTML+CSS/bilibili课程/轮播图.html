@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="swiper">
+        <div class="imgList">
+            <div class="imgItem active" style="background-image: url(img/swiper1.jpg);"></div>
+            <div class="imgItem" style="background-image: url(img/swiper2.webp);"></div>
+            <div class="imgItem" style="background-image: url(img/swiper3.webp);"></div>
+            <div class="imgItem" style="background-image: url(img/swiper4.webp);"></div>
+            <div class="imgItem" style="background-image: url(img/swiper5.webp);"></div>
+        </div>
+        <div class="btnList">
+            <div class="btn pre"><</div>
+            <div class="btn nxt">></div>
+        </div>
+        <div class="alist">
+            <div id="d0" class="ball active"></div>
+            <div id="d1" class="ball"></div>
+            <div id="d2" class="ball"></div>
+            <div id="d3" class="ball"></div>
+            <div id="d4" class="ball"></div>
+        </div>
+    </div>
+</body>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .swiper{
+        width: 1226px;
+        height: 460px;
+        margin: 0 auto;
+        position: relative;
+    }
+    .swiper .imgList{
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    .swiper .imgList .imgItem{
+        width: 100%;
+        height: 100%;
+        background-size: 100% 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        transition:all 0.5s;
+    }
+    .swiper .imgList .imgItem.active{
+        opacity: 1;
+    }
+    .swiper .btn.pre{
+        width: 80px;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: #fff;
+
+        position: absolute;
+        left: calc(50% -50px);
+        top: calc(50% - 30px);
+        font-size: 30px;
+    }
+    .swiper .btn.nxt{
+        width: 80px;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: #fff;
+
+        position: absolute;
+        top: calc(50% - 30px);
+        right: 0;
+        font-size: 30px;
+    }
+    .alist{
+        width: 400px;
+        height: 21px;
+        display: flex;
+        justify-content: flex-end;
+        position: absolute;
+        right: 35px;
+        top: 433px;
+    }
+    .alist .ball{
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: 2px solid #999;
+        background-color: #666;
+        margin: 0 4px;
+    }
+    .alist .ball.active{
+        background: #ccc;
+        border: 2px solid #666;
+    }
+</style>
+<script>
+    window.onload = function () { 
+        lunbo()
+        var preBtn = document.querySelector('.swiper .pre')
+        var nxtBtn = document.querySelector('.swiper .nxt')
+        var imgListDiv = document.querySelectorAll('.swiper .imgItem')
+        var currentImg = 0;
+        var alist = document.querySelectorAll('.swiper .ball');
+        var timmer;
+        function lunbo() { 
+           timmer = setInterval(() => {
+                if(currentImg<4){
+                    currentImg++
+                }else{
+                    currentImg=0
+                }   
+                randerImg()
+            }, 2000);
+        };
+        //停止和重启定时器
+        function stop(fn) { 
+           clearInterval(timmer)
+           fn()    
+        }
+        //绑定点击事件
+        nxtBtn.onclick = function () {
+            currentImg  =  currentImg+1
+            if(currentImg>=imgListDiv.length){
+                currentImg = 0
+            }
+            randerImg()
+            stop(lunbo)
+        }
+        preBtn.onclick = function () {
+            currentImg  =  currentImg-1
+            if(currentImg<0){
+                currentImg = imgListDiv.length-1;
+            }
+            randerImg()
+            stop(lunbo)
+        }
+        function randerImg() { 
+            //初始化将所有图片的active去掉
+            imgListDiv.forEach((item,i)=>{
+                item.classList.remove('active');
+            })
+            alist.forEach((item)=>{
+                item.classList.remove('active');
+            })
+            imgListDiv[currentImg].classList.add('active')
+            alist[currentImg].classList.add('active')
+        }
+        
+        alist.forEach((item,i)=>{
+            item.onclick = () => {
+                currentImg = i;
+                randerImg()
+                stop(lunbo)
+            }
+        })
+    }
+     
+</script>
+</html>

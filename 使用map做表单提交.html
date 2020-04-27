@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>使用map做表单提交</title>
+</head>
+<body>
+    <form action="" onsubmit="return post()">
+        <input type="checkbox" name="agreement" error="请接收协议"/>注册协议
+        <input type="checkbox" name="agreement" error="网站只对学生开放"/>是否为学生
+        <input type="submit" />
+    </form>
+</body>
+<script>
+    function post() { 
+        let map  = new Map();
+        let inputs = document.querySelectorAll("[error]");//DOM操作获取到全部的，包含error信息的input输入框
+        inputs.forEach(function(item){
+            map.set(item,{//向map中塞入input标签元素作为键，和input标签元素中的属性作为值
+                error:item.getAttribute("error"),
+                status:item.checked
+            });
+        });
+        console.log(map)
+        console.log([...map])//[...map]将map对象展开并转换成一个二维数组
+         return [...map].every(function([elem,config]){/*将inputs.forEach中map.set得到的map展开到数组中，对map数组进行every的方法，
+            在every的参数中再以数组的形式展开map数组中的元素，elem是input标签元素，config是error信息和status组成的对象*/
+            console.log(elem)
+            console.log(config);
+            config.status || alert(config.error);//判断，config.status为false的时候，弹出error信息
+            return config.status //返回config.status
+        })//函数执行完后，需要将整个[...map]的执行结果返回出去true或false,而every函数，只有在全部为true的时候才会返回true，也就是说只要有一个没勾选，表单都无法提交
+     };
+</script>
+</html>

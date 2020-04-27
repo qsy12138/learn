@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>数组的reduce方法</title>
+</head>
+<body>
+    <script>
+        let arr = [1,2,3,4,5];
+        //reduce的语法
+        arr.reduce(function(pre,value,index,array){
+            /*pre表示该匿名函数的返回值，如果在reduce函数的参数中没有指定这个值，那么他第一次会占用传入的数组的第一个值，
+            并且，如果reduce函数的匿名函数中没有返回值，那么后续都是undefined，如果有返回值，那么后续就是用返回值
+            如果指定了，那么pre会占用指定的这个值,作为第一个值*/
+            console.log(pre,value)
+        },0);
+
+
+        //reduce方法可以使用的场景，用来统计数组中数值出现的次数
+        let hd = [1,2,3,1,1,5];
+        function arrayCount(array,item){
+            return array.reduce(function (total,cur) {
+                console.log(total,cur);
+                total += (item == cur?1:0);//判断，每次reduce中返回的cur与item是否相等，是就返回1并与total执行+=，不是的话就返回0并与total执行+=
+                //console.log(item);
+                console.log(total);
+                return total;
+              },0);
+        }
+        console.log(arrayCount(hd, 1));
+        
+        //使用reduce方法对数组进行去重
+        const afterUnique = hd.reduce(function(all, current){//current会取出hd数组里面的每一个值
+            //console.table(current);
+            if(!all.includes(current)){
+                all.push(current)/*使用include进行取反判断（因为include判断current，如果all里面有current则返回true，没有则返回false），
+                如果all这个数组里面没有当前的current，就把当前的current的值push到这个数组中，注：all开始是个空数组[]，所以只要这个current不重复的话，每次都会push进去一个值*/
+            }
+            return all//把得到的新数组返回出去，达到去重的效果
+        },[]);
+        console.table(afterUnique);
+        //使用reduce取出最大值
+        let newArr = [1,2,3,89,4,5];
+        function arrayMax(array){
+            return array.reduce(function(pre,cur){
+                console.log(pre,cur);
+                return pre>cur?pre:cur;/*这里可以理解为，return的是一个最后一个pre，而pre会和cur进行比较，（这里比较难理解，尝试返回cur的时候，返回的也是cur的最后一个值）
+                当cur大于pre的时候，就把pre的值变为cur，最终就会返回最大的一个值给pre,
+                第一次使用默认的1，第二次是2，第三次是3，第四次是89，第五次和第六次都会是89，pre最终的值是89
+                reduce函数中return出来的pre就是89*/
+               
+            });
+        };
+        console.log('取最大值'+":"+arrayMax(newArr));
+
+        let cart = [{name:'iphone',price:12000},{name:'imac',price:25000},{name:'ipad',price:3600}];
+        function sum(goods) {
+           return goods.reduce(function (total,cur) {
+                return (total+=cur["price"])
+              },0)
+          }
+          console.log('求和'+":"+sum(cart));
+    </script>
+</body>
+</html>

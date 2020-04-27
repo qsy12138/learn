@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="d1">
+        <div class="d3">111</div>
+        <div class="d3">222</div>
+        <div class="d3">333</div>
+        <div class="d4">333</div>
+    </div>
+    <img src="" alt="">
+    <h1></h1>
+    <h1></h1>
+    <div class="d2"></div>
+</body>
+<script>
+    console.log([document])
+    
+    //DOM的获取元素的方法
+    var c = document.querySelectorAll('.d1>.d3')
+    console.log(c)
+    
+    //DOM获取子节点的方法
+    var child = document.querySelector('.d1').childNodes
+    console.log(child)
+    
+    //追加子元素节点的流程
+    var h1 = document.createElement('h1');//创建一个元素
+    h1.innerHTML='追加的元素'//添加元素中的内容
+    var d1 = document.querySelector('.d1');//查找到要被追加元素的元素
+    d1.appendChild(h1)//为它追加子元素
+
+    //在某个元素之前插入元素
+    var img = document.createElement('img')//首先，创建需要后面需要追加的元素
+    img.src = 'img/5G.jpg'//设置需要追加的元素的内容，此处追加的图片，所以设置图片的src属性
+    var body = document.querySelector('body')//查找到要追加的父元素，此处为body
+    var d2 = document.querySelector('.d1')//查找到要被在之前或者之后插入元素的节点
+    body.insertBefore(img,d1);//插入元素
+
+    var img2 = document.createElement('img')
+    img2.src = 'img/book.png'
+    var d3 = document.querySelector('.d1');
+    var d4 = document.querySelector('.d1 :nth-child(2)')
+    d3.insertBefore(img2,d4)
+</script>
+</html>

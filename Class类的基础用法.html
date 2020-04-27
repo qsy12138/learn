@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Class类的基础用法</title>
+</head>
+<body>
+    <script>
+        //ES5中，定义一个类的方法
+        function Animal(type) { 
+            this.type = type;
+         };
+         Animal.prototype.eat = function () { 
+                return this.type
+             }
+         var dog = new Animal("狗");
+         var monkey = new Animal("猴子");
+         monkey.__proto__.eat = function () { 
+             return  "555"
+          }
+        var a = monkey.eat();
+        var b = dog.eat();
+        console.log(a);
+        console.log(b);
+
+        //ES6中，使用Class语法糖，定义一个类
+        class Person{
+            constructor(name){//此处为构造函数，在这里我们可以定义构造函数的构造器属性
+                this.name = name
+            }
+            //在constructor构造器之外定义的属性，都是prototype原型对象属性
+            callName(){
+                return this.name
+            }
+            shout(){
+                console.log("你好")
+            }
+        }
+        var dell = new Person("戴尔");
+        var terry = new Person("泰瑞");
+        var c = dell.callName();
+        var d = terry.callName();
+        console.log(c);
+        console.log(d);
+        dell.shout();
+
+        class Chinese extends Person{
+        }
+        var qiansiyuan = new Chinese("钱思远");
+        console.log(qiansiyuan.callName());
+        
+    </script>
+</body>
+</html>

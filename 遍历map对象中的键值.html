@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>遍历Map对象</title>
+</head>
+<body>
+    <script>
+        let hd = new Map([["钱思远","100"],["张三","95"],["Mike","85"]]);
+        console.log(hd.keys());//获取Map中的键
+        console.log(hd.values());//获取Map中的值
+        console.log(hd);//获取Map中的键值对
+        //遍历Map对象中的键
+        for (const key of hd.keys()) {
+            console.log("Map中的键："+key);
+        };
+        //遍历Map对象中的值
+        for (const value of hd.values()) {
+            console.log("Map中的值："+value);
+        };
+        //遍历Map对象
+        for (const [key,value] of hd) {
+            console.log('Map对象'+ key,value);
+            console.log("键"+key);//map中的键
+            console.log("值"+value);//map中的值
+        };
+
+        //foreach循环遍历
+        hd.forEach((value,key) => {
+            console.log(value,key)
+        });
+    </script>
+</body>
+</html>

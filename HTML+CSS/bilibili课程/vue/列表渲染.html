@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h2>v-for遍历数组</h2>
+        <ul>
+            <li v-for="(item,index) in person" :key="index" style="list-style: none;">
+                姓名：{{item.name}}&nbsp;&nbsp;&nbsp;年龄：{{item.age}}
+                <button @click="deleteP(index)">删除</button>
+                <button @click="update(index,{name:'xxx',age:'18'})">更新</button>
+            </li>
+        </ul>
+        <h2>v-for遍历对象</h2>
+        <ul>
+            <li v-for="(item,index) in person[0]" :key="index">
+                {{item}}----{{index}}
+            </li>
+        </ul>
+    </div>
+    <script src="D:\vue课程练习\vue.js"></script>
+    <script>
+        //Vue中重写了数组中一系列改变数组内部数据的方法(先调用原生的，更新界面)--->数组内部改变界面自动变化
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                person:[
+                    {name:'qsy',age:28},
+                    {name:'yy',age:30},
+                    {name:'wzq',age:29},
+                    {name:'zck',age:28},
+                ]
+            },
+            methods: {
+                deleteP(index){
+                    this.person.splice(index,1)
+                },
+                update(index,newP){
+                    this.person.splice(index,1,newP)
+                }
+            },
+        })
+    </script>
+</body>
+</html>

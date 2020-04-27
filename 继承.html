@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>继承</title>
+</head>
+<body>
+    <script>
+        function Animal(type){//父类
+            this.type = type;
+            this.age = 16
+        }
+        Animal.prototype.showName = function(){
+            console.log(this.type)
+        }
+        function Dog(name,color,age){//子类
+           Animal.call(this,name)//继承父类的属性
+           this.color = color   
+        };
+        Dog.prototype = new Animal();
+        Dog.prototype.constructor = Dog;//继承父类的方法
+        var dog = new Dog("柴犬","黄色",12);
+        //console.log(dog.a)
+        dog.showName()
+
+
+    </script>
+</body>
+</html>

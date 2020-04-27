@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>反射机制</title>
+</head>
+<body>
+    <script>
+        //假定一个需求：在一个超市计算顾客购买的商品价格时，如果价格大于100就向下取整，如果价格小于100时，就向上取整
+        let price = 99.25;
+        //es5中的做法
+        // if(price>100){
+        //    console.log(Math.floor.apply(null,[price])) 
+        // }else{
+        //    console.log(Math.ceil.apply(null,[price])) 
+        // }
+        //使用es6的反射机制
+        console.log(Reflect.apply(price>100?Math.ceil:Math.floor,null,[price]))
+        let obj = {
+            name:"aaaa",
+            age:25
+        }
+        Object.freeze(obj)
+        obj.name = "bbb"
+        console.log(obj)
+
+        var a=0;
+        if(true){
+            a=1;
+            function a() {  };
+            a=21;
+            a=22;
+            console.log(a);
+            a=3;
+            console.log(a);
+            function b(){ };
+            a=5;
+            console.log(a);
+        }
+        console.log(a);
+    </script>
+</body>
+</html>

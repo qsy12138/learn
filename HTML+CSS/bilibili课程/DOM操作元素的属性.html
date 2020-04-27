@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="d1">hello World</div>
+    <img src="" alt="">
+</body>
+<script>
+    //任何一个对象都会有属性
+    var d1 = document.querySelector('.d1')
+    console.log([d1])
+    d1.id = 'd2'
+    //设置属性setAttribute(属性名称，属性值),如果元素中默认没有该属性，那么该属性只会创建到对象中，不会显示在元素标签上
+    var img = document.querySelector('img')
+    img.setAttribute('src','img/cart.png')
+    img.removeAttribute('src')
+</script>
+</html>

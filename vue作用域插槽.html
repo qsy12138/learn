@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>vue作用域插槽</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <child>
+            <template slot-scope="value"><!--使用作用域插槽的场景：当子组件做循环或者某一部分的DOM结构应该由外部父组件传入的时候，这时候需要使用-->
+                <!--使用作用域插槽时，子组件可以向父组件的插槽中传入数据，父组件传递过来的插槽如果想接受这个数据，必须使用<template>这个标签，
+                    同时需要通过slot-scope对应的属性名，来接受传递过来的数据-->
+                <h1>{{value.item}}</h1>
+            </template>
+        </child>
+    </div>
+    <script>
+        Vue.component('child',{
+            data() {
+                return {
+                    list:[
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                }
+            },
+            template:`<div>
+                        <ul>
+                            <slot v-for='item of list' :item=item>
+                            </slot>
+                        </ul>
+                      </div>`
+        })
+        var vm = new Vue({
+            el:'#app'
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{date}}</p>
+        <p>{{date | dateStr}}</p>
+        <p>{{date | dateStr('YYYY-MM-DD')}}</p>
+        <p>{{date | dateStr('HH:mm:ss')}}</p>
+    </div>
+    <script src="D:\vue课程练习\vue.js"></script>
+    <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+    <script>
+      Vue.filter('dateStr',function(value,format){//过滤器方法是Vue函数对象的原型方法，他传递两个参数，第一个参数是过滤器的名称，第二个参数是一个回调函数
+            return moment(value).format(format || 'YYYY-MM-DD HH:mm:ss')
+        })
+      new Vue({
+            el:'#app',
+            data() {
+                return {
+                    date:new Date()
+                }
+            },
+        })
+    </script>
+</body>
+</html>

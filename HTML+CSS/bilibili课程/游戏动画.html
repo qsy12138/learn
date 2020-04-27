@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <iframe></iframe>
+    <iframe></iframe>
+    <title>Document</title>
+</head>
+<body>
+    <div id="d1">
+
+    </div>
+    <div id="d2">
+
+    </div>
+</body>
+<style>
+    #d1{
+        width: 300px;
+        height: 200px;
+        background-image: url(img/naruto.png);
+        background-size: auto;
+        /* 背景图片的位置 */
+        /* background-position: 0px 100px; */
+        animation: lxw 2s steps(2) infinite;
+        animation: lxw2 2s steps(16) infinite;
+        float: left;
+    }
+    @keyframes lxw {
+        from{
+            background-position: 0 0;
+        }
+        to{
+            background-position: -960px 0px;
+        }
+    }
+    @keyframes lxw2 {
+        from{
+            background-position: 0 0;
+        }
+        to{
+            background-position: 0px -3072px;
+        }
+    }
+    #d2{
+        width: 300px;
+        height: 190px;
+        background-image: url(img/sasuki.png);
+        background-size: auto;
+        /* 背景图片的位置 */
+        /* background-position: 0px 100px; */
+        animation: qn 2s steps(13) infinite;
+        float: left;
+        margin-top: 80px;
+        margin-left: -193px;
+    }
+    @keyframes qn {
+        from{
+            background-position: 0 0;
+        }
+        to{
+            background-position: 0px -2496px;
+        }
+    }
+</style>
+<script>
+    // for(let i=0;i<4;i++){
+    //     setTimeout(()=>{
+    //         console.log(i)
+    //     })
+    // }
+    
+    // function foo() { 
+    //     var a = 1;
+    //     console.log('来个闭包')
+    //     function foo() { 
+    //         console.log(a+2)
+    //      }
+    //      return foo
+    //  }
+    //  foo()
+    //  var p = {name: 'obj'}
+    //  var obj4 = Object.create(p)
+     
+    // var obj5 = Object.create({name:'qian'})
+    // var obj5 ={age:16}
+    //  console.log(obj5.name)
+
+    //  var a = 0;
+    //  if(true){
+    //      a=1;
+    //      console.log(a, window.a)
+         
+    //  }
+    // let length = 10;
+    // function fn() { 
+    //     //console.log(this.length)
+    //     return this.length
+    //  }
+    //  var obj = {
+    //      length :5,
+    //      method:function(fn){
+    //         fn();
+    //         console.log(arguments[0])
+            
+    //         console.log(arguments[0].call(this))
+    //      }
+    //  };
+    //  obj.method(fn,1,2)
+    //  var a = [1,2,3,4,5,6];
+    //  console.log(a)
+
+    // function Person(name,age) { 
+    //     this.name = name;
+    //     this.age = age;
+    //  }
+    // function Chinese(a,b) { 
+    //     Person.call(this,a,b)
+        
+    //  }
+    //  var qsy = new Chinese("qsy",28)
+    //  console.log(qsy.age)
+
+     var obj ={color:'111'}
+     function Person(name,age) { 
+        this.name = name;
+        this.age = age;
+        console.log(this.name+this.age)
+     }
+     Person.call(obj,'qian',18)
+</script>
+</html>

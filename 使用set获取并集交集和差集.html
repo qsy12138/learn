@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>set获取交集并集和差集</title>
+</head>
+<body>
+    <script>
+        let a = new Set([1,2,3,4,5,6]);
+        let b = new Set([1,2,9,10,0]);
+        console.table([...a,...b]);//获取交集
+        console.log(
+            new Set(
+                [...a].filter(function(item){
+                    //return !b.has(item);//差集
+                    return b.has(item);//交集
+                })
+            )
+        )
+    </script>
+</body>
+</html>

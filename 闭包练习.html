@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>闭包练习-计数器</title>
+</head>
+<body>
+    <button id="btn">点击</button>
+</body>
+<script>
+    // var btn = document.getElementById("btn");
+    // var trick = (function(){
+    //     var courrent = 0;
+    //     return {
+    //         clickBtn:function(){
+    //            return courrent++;
+    //         }
+    //     }
+    // })()
+    // console.log(trick)
+    // btn.onclick = function(){
+    //     var a = trick.clickBtn();
+    //     console.log(a)
+    // }
+    //var name = "小钱"
+//     function create() { 
+//        var obj = {};
+//        var Con = [].shift.call(arguments);
+//        obj.__proto__ = Con.prototype;
+//        var result = Con.apply(obj,arguments);
+//        return result instanceof Object? result: obj
+//     }
+//    function Person(xingm,nianl){
+//         this.name = xingm;
+//         this.age = nianl
+//    }
+//    Person.prototype.callName = function(){
+//        console.log('我的名字是'+this.name+ '年龄'+this.age)
+//    }
+//     var p = create(Person,"钱思远",28)
+//     p.callName()
+
+function Person(name, height ,weight , gender) {
+    this.name = name
+    this.height = height
+    this.weight = weight
+    this.gender = gender
+    // this.sayInfo = function() {
+    //     return "姓名：" + this.name + ", 身高：" + this.height + ", 体重：" + this.weight+ ", 性别：" +this.gender;
+    // }
+}
+Person.prototype.sayInfo = function() {
+        return "姓名：" + this.name + ", 身高：" + this.height + ", 体重：" + this.weight+ ", 性别：" +this.gender;
+    }
+var a = {}
+Person.apply(a,["钱思远","168","55kg","男"])
+//子类
+function Chinese() {
+    Person.apply(this,arguments)
+}
+Chinese.prototype = new Person
+//子类
+function America(name, height, weight) {
+    Person.apply(this, [name, height]);
+    this.weight = weight;
+}
+
+//console.log(a.sayInfo());
+let chiness = new Chinese("成龙", "178cm", "60kg","男");
+console.log(chiness.name);    //姓名：成龙, 身高：178cm, 体重：60kg
+let america = new America("jack", "180cm", "55kg");
+console.log(america.sayInfo());
+</script>    
+</html>

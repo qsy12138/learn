@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>子组件向父组件传值</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <counter :count="0" @inc="handleincClick"></counter><!--子组件通过事件的方式向父组件传递值，父组件中@后面的方法名，需要与子组件$emit中写的一致-->
+        <counter :count="1" @inc="handleincClick"></counter>
+        <div>{{total}}</div>
+    </div>
+    <script>
+        //局部组件
+        var counter={
+            props:['count'],
+            template:'<div @click="handleClick">{{number}}</div>',
+            data() {
+                return {
+                    //不能直接修改父组件传递的值count，所以将父组件的count赋值给子组件定义的number
+                    number:this.count
+                }
+            },
+            methods: {
+                handleClick:function(){
+                    this.number=this.number+2
+                    //子组件通过事件的方法向父组件传值，使用$emit的方法，‘’中定义事件名称，可以传递参数，参数可以传递不止一个
+                    this.$emit('inc', 2)
+                }
+            },
+        }
+        var vm = new Vue({
+            el:'#app',
+            components:{
+                //局部组件注册
+                counter:counter
+            },
+            data:{
+                total:1
+            },
+            methods:{
+                //父组件中执行子组件传递过来的方法，并接受子组件的传参，参数名称可自定义
+                handleincClick:function(value){
+                    this.total += value
+                }
+            }
+        })
+    </script>
+</body>
+</html>

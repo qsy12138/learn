@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <button @click="isshow=!isshow">toggle</button>
+        <transition name="xxx">
+            <p v-show="isshow" class="xxx-enter-to">hello</p>
+        </transition>
+    </div>
+    <div id="app2">
+        <button @click="isshow=!isshow">toggle</button>
+        <transition name="yyy">
+            <p v-show="isshow">hello</p>
+        </transition>
+    </div>
+    <script src="D:\vue课程练习\vue.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data() {
+                return {
+                    isshow:true
+                }
+            },
+        })
+
+        new Vue({
+            el:'#app2',
+            data() {
+                return {
+                    isshow:true
+                }
+            },
+        })
+    </script>
+    <style>
+        /* 显示/隐藏的过渡效果 */
+        .xxx-enter-active, .xxx-leave-active{
+            transition: opacity 1s;
+        }
+        /* 指定隐藏时的样式 */
+        .xxx-enter, .xxx-leave-to{
+            opacity: 0;
+        }
+
+        .yyy-enter-active{
+            transition: all 1s;
+        }
+        .yyy-leave-active{
+            transition: all 3s;
+        }
+        .yyy-enter, .yyy-leave-to{
+            opacity: 0;
+            transform: translateX(20px);
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>
+        点我
+    </button>
+</body>
+<script>
+     var btn = document.querySelector("button");
+    // btn.onclick = () => {
+    //    var h1 = document.createElement('h1')
+    //    h1.innerHTML = 'Hello World'
+    //    document.body.appendChild(h1)
+    // }
+
+    var changeBackGround = () => {
+        document.body.style.backgroundColor = 'skyblue'
+    }
+    var createDiv = () => {
+        var div = document.createElement('div');
+        div.innerHTML = '这是1个div'
+        document.body.appendChild(div)
+    }
+    //使用addEventListener方法
+    btn.addEventListener('click',changeBackGround)
+    btn.addEventListener('click',createDiv)
+</script>
+</html>

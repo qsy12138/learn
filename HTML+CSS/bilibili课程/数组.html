@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    var arr = [1,2,3,4,5,6]
+    console.log(arr['length'])
+    //数组的提取和添加删除
+    //使用slice提取数组中的元素
+    var newArr = arr.slice(1,2)//slice方法第一个参数是起始值，第二个参数为索引值，可以提取出一个新数组，原数组的内容不发生改变
+    console.log(newArr)
+    
+    arr.splice(1,3)//splice方法，第一个参数时起始值的下标，第二个参数是需要删除的数量，会改变原数组
+    console.log(arr)
+    //splice方法同样可用来添加数组元素，需要三个参数，第一个参数时起始值的下标，第二个参数是0表示不删除，从第三个参数开始，都表示添加的内容
+    arr.splice(2,0,"qqq")
+    console.log(arr)
+    
+    //结合slice方法，可以将一个伪数组转换成一个真的数组
+    function changeArr() { 
+       var newArray = [].slice.call(arguments)
+       console.log(newArray)//得到的是一个数组
+     }
+     changeArr(1,2,3,4,5,6)
+
+     //数组合并的方法
+     var arr1 = ['qsy','yy','tt']
+     var arr3 = arr.concat(arr1);
+     console.log(arr3)
+
+     //将数组转换成字符串
+     var str = arr3.toString()
+     console.log(str)
+
+     //将数组的数据进行颠倒
+     var arr4 = arr3.reverse()
+     console.log(arr4)
+
+     //模拟forEach的实现原理
+     arr4.__proto__.forEvery = function (fn) { 
+         for(let i=0;i<this.length;i++){
+             fn(this[i],i,this)
+         }
+      }
+      arr4.forEvery((item)=>{
+          console.log(item)
+      })
+     arr4.forEach((item)=>{
+        console.log(item)
+      })
+      
+
+      //map方法对数组的数据进行加工
+     var arr5 = arr4.map((item)=>{
+        return item +'￥' 
+      })//会返回一个新的数组，原数组不会发生变化
+      console.log(arr5)
+
+      //模拟一个map方法
+      arr4.__proto__.formap = function (fn) { 
+          let arr=[];
+          for(let i=0;i<this.length;i++){
+             arr[i] = fn(this[i],i,this)
+          }
+          return arr
+       };
+      var arr6 = arr4.formap((item)=>{
+        return item +'#'
+    });
+    console.log(arr6)
+    
+    //数组的去重
+    var obj = {name:'aaa'}
+    var arr7 = [1,1,'true','true',true,true,15,15,false,false, undefined,undefined, null,null, NaN, NaN,'NaN','NaN', 0, 0, 'a', 'a',{},{}];
+    //使用set的方法去重
+    var arr8 = [...new Set(arr7)];
+    console.log(arr8);
+    
+    //使用循环的方式去重
+    for(let i=0;i<arr7.length;i++){
+        for(let j=i+1;j<arr7.length;j++){
+            if(arr7[i]==arr7[j]){
+                arr7.splice(j,1)
+                //j--
+            }       
+        }
+    }  
+    console.log(arr7)
+    
+    //使用indexOf方法去重
+    let arr9=[];
+    for(let i=0;i<arr7.length;i++){
+        if(arr9.indexOf(arr7[i])<0){//因为indexOf会返回一个下标，如果数组中不存在这个值，返回-1，否则就返回该值的下标，所以可以用它是否小于0来进行判断
+            arr9.push(arr7[i])//小于0说明新数组中不存在这个值，可以将这个值push到新数组当中
+        }
+    }
+    console.log(arr9)
+    
+    //使用includes方法去重
+    let arr10=[];
+    for(let i=0;i<arr7.length;i++){
+        if(!arr10.includes(arr7[i])){//因为includes方法会去判断，数组中是否包含该值，如果包含则返回true，如果不包含则返回false，所以可以用取反来进行判断
+            arr10.push(arr7[i])//当false的时候说明新数组中不包含这个值，将该值push到新数组当中
+        }
+    }
+    console.log(arr10)
+
+    //使用reduce方法去重
+   // let arr11 = [];
+    let arr11 = arr7.sort().reduce((value1,value2)=>{
+        if(value1.length === 0 || value1[value1.length-1] !== value2) {
+            value1.push(value2);
+        }
+        return value1
+    },[])
+    console.log(arr11);
+
+    //数组的排序
+    let array = [1,4,-8,-3,6,12,9,8]; 
+    for(let i=0;i<array.length;i++){
+        for(let j=0;j<array.length-i;j++){
+            if(array[j]>array[j+1]){//0,1 1,2 2,3 3,4
+                var temp = array[j];
+                array[j] = array[j+1];
+                array[j+1] = temp
+            }
+        }
+    }
+    console.log(array)
+    
+    //数据过滤filter方法
+   var arr12 = array.filter((item)=>{
+        return item>2
+    })
+    console.log(arr12)
+    //模拟filter方法
+    array.__proto__.forfliter = function (fn) { 
+        let newArr = [];//创建一个新数组
+        for(let i=0;i<this.length;i++){//遍历调用该方法的数组
+            let pd = fn(this[i],i,this);//每遍历拿到一个遍历出的数组的值，就执行一次回调函数
+            if(pd){//判断回调函数的返回值是否为true
+                newArr.push(this[i])//如果回调函数的返回值为true，则将原数组的值push到新数组当中
+            }
+        }
+        return newArr//返回得到的新数组
+     }
+   var arr14 = array.forfliter((item)=>{
+        return item>2
+    })
+    console.log(arr14)
+    
+    //模拟一个forEach
+    array.__proto__.Fforeach = function (fn) { 
+        for(let i=0;i<this.length;i++){
+            fn(this[i],i,this)
+        }
+     }
+     array.Fforeach((item)=>{
+         console.log(item)
+     })
+
+     //数组的find方法
+    let result = array.find((item)=>{
+         if(item===4){
+             return true
+         }
+     })
+     console.log(result)
+    
+    //数组的findindex方法
+    let result2 = array.findIndex((item)=>{
+        return item>4
+    })
+    console.log(result2)
+</script>
+</html>

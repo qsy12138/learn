@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性、方法、监听器</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">{{fullName()}}</div>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                firstName:'qian',
+                lastName:'siyuan'
+            },
+            //方法
+            methods: {
+                fullName: function(){
+                    return this.firstName+this.lastName;
+                    
+                }
+            },
+        })
+    </script>
+</body>
+</html>

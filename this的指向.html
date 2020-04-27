@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>this的指向</title>
+</head>
+<body>
+    <script>
+        var qm = {
+            name:"xiaoqian",
+            showThis:function(){
+                return this
+            }
+        }
+        var qm2 = {
+            name:"xiaoqian2",
+            showThis:function(){
+                console.log(this)
+                return qm.showThis()
+            }
+        }
+        var qm3 = {
+            name:"xiaoqian3",
+            showThis:function(){
+                var st = qm.showThis;
+                return st()
+            }
+        }
+        console.log(qm.showThis())
+        console.log(qm2.showThis())
+        console.log(qm3.showThis())
+
+
+        var length = 10;
+        function fn() { 
+            console.log(this.length)
+         };
+         var obj = {
+             length:5,
+             method:function(){
+                 fn();
+                 fn.call(this)
+             }
+         };
+         obj.method();
+         var obj = {
+             data:[1,2,3,4],
+             print:function(){
+              this.data.forEach(function(){
+               console.log(this)  
+             })
+             }
+         };
+         obj.print()
+    </script>
+</body>
+</html>

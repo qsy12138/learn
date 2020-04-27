@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="outer">
+        <ul id="imgList">
+            <li><img src="./img/0.jpg" alt=""></li>
+            <li><img src="./img/4.jpg" alt=""></li>
+            <li><img src="./img/2.jpg" alt=""></li>
+            <li><img src="./img/3.jpg" alt=""></li>
+        </ul>
+        <div id="nav">
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+            <a href="javascript:;"></a>
+        </div>
+    </div>
+</body>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #outer{
+        width: 590px;
+        height: 470px;
+        margin: 50px auto;
+        padding: 10px 0;
+        position: relative;
+        overflow: hidden;
+    }
+    #imgList{
+        position: absolute;
+        list-style: none;
+        /* 设置偏移量 */
+        /* 每向左移动590个像素，就显示下一张 */
+        
+    }
+    #imgList li{
+        float: left;
+        margin: 0 10px;
+    }
+    #nav{
+        position: absolute;
+        bottom: 20px;
+    }
+    #nav a{
+        float: left;
+        width: 15px;
+        height: 15px;
+        background-color: red;
+        margin-left: 5px;
+    }
+    /* 设置鼠标移入效果 */
+    #nav a:hover{
+        background-color: black;
+    }
+</style>
+<script>
+    window.onload = function(){
+        var imgList = document.getElementById("imgList");
+        var imgArr = document.getElementsByTagName("img");
+        imgList.style.width = 610*imgArr.length+"px";
+        //设置导航按钮居中
+        var nav = document.getElementById("nav");
+        var outer = document.getElementById("outer");
+        //设置nav的left值
+        nav.style.left = (outer.offsetWidth - nav.offsetWidth)/2+"px";
+        //默认图片的索引
+        var index = 0;
+        //获取所有的a
+        var allA = document.getElementsByTagName("a");
+        //设置默认选中的效果
+        allA[index].style.backgroundColor = "black";
+        //点击超链接切换到指定图片
+        for(let i = 0;i<allA.length;i++){
+            //为每一个超链接都添加一个num属性
+            allA[i].num = i;
+            allA[i].onclick = function(){
+                clearInterval(timer);
+                //获取点击超链接的索引
+                index = this.num;
+                //切换图片
+                imgList.style.left = -610*index+"px";
+                //调用setA函数
+                setA();
+            }
+        }
+
+        autoChange()
+
+        //声明一个改变a标签颜色的函数
+        function setA() { 
+            for(let i=0;i<allA.length;i++){
+                //遍历a标签，将所有的a标签变为红色
+                allA[i].style.backgroundColor = ""
+            }
+            //将选中的a，变成黑色
+            allA[index].style.backgroundColor = "balck"
+         }
+         var timer;
+         function autoChange() { 
+            timer = setInterval(() => {
+                 //使用自增索引
+                 index++;
+                 //判断index的值
+                 index %= imgArr.length 
+                 imgList.style.left = -610*index+"px";
+                 setA();
+             }, 3000);
+          }
+    }
+</script>
+</html>

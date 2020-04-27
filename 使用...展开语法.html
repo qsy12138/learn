@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>使用...展开语法</title>
+</head>
+<body>
+    <script>
+        let arr = ["houdunren","hdcms"];
+        let hd = ["js","css"];
+        /*使用...这种展开语法，将数组中的值取出并展开，然后可以进行重新拼接，达到简单的拼接数组的目的。
+        ...arr可以将arr数组展开，因为demo中数组数据是两条所以看不出明显优势
+        可以设想，当arr中数据较多的时候，let arr = [1,2,3,4,5,6,7,8]，使用...直接将数组中的值取出并展开
+        */
+        newarr = [...arr,...hd];//可以看做是：arr = ["houdunren","hdcms","js","css"]
+        console.log(newarr);
+
+        //展开语法的其他妙用，如函数传参
+        function sum(...arg){//当参数个数无法固定的时候，可以使用...的展开语法来定义参数
+            return arg.reduce((s,v)=>{
+                return (s+=v)
+            }
+            ,0);
+        }
+        console.log(sum(1,2,3,4,5))//在使用这个函数的时候，就可以随心所欲的传入任意个数的参数了
+        
+        //...甚至可以双向理解，可以压入，可以展开，在上面一段代码中，就是将参数压入到arg中，使他变成一个数组
+        function fun(num){
+            return num%2 ==0;
+        }
+        console.log(fun(2));
+
+
+        let obj = {
+            name:"qian",
+            age:"20",
+            gender:"男"
+        }
+        
+        // console.log([[...obj]])
+        // console.log(obj.name===""||obj.age!="")
+        console.log(Promise.prototype)
+
+        
+        function foo() {
+            console.log(a); // 2  (不是 3!)
+        }
+
+        function bar() {
+            var a = 3;
+        foo();
+        }
+        var a = 2;
+        bar();
+
+        // window.a = 3
+        // function test () {
+        // console.log(this.a)
+        // }
+
+        // test.bind({ a: 2 })() // 2
+        // test()
+
+        // for(let i=0;i<4;i++){
+        //     //var a = i;
+        //     //console.log(i)
+        //     setTimeout(function(){
+        //         console.log(i)
+        //     },2000)
+        // }
+        // //拆分
+        // {
+        //     let i;
+        //     i=0;
+        //     setTimeout(function(){
+                
+        //         console.log(i)
+        //     },2000);
+        // }
+        // {
+        //     let i;
+        //     i=1;
+        //     setTimeout(function(){
+                
+        //         console.log(i)
+        //     },2000);
+        // }
+        // {
+        //     let i;
+        //     i=2;     
+        //     setTimeout(function(){
+        //         console.log(i)
+        //     },2000)
+        // }
+        // {
+        //     let i;
+        //     i=3;
+        //     setTimeout(function(){
+        //         console.log(i)
+        //     },2000)
+        // }    
+        // {
+        //     let i;
+        //     i=4;
+        //     setTimeout(function(){
+        //         console.log(i)
+        //     },2000)
+        // }
+
+        
+
+        // var loop = function(i){
+        //     setTimeout(function(){
+        //         console.log(i)
+        //     },100*i)
+        // }
+        // for(var i=0;i<4;i++){
+        //     //var a = i;
+        //    loop(i);
+        // }
+        // console.log("1")
+        // setTimeout(()=>{
+        // console.log("2")
+        // promise.resolve(1).then(()=>{
+        // console.log("promise")
+        // })
+        // })
+        // setTimeout(()=>{
+        // console.log("3")
+        // })
+        // for(var i=0;i<3;i++){
+        // // console.log(i)
+        // setTimeout(()=>{
+        //     console.log(i)
+        // },1000)
+        // }
+        console.log("6")
+        new Promise(resove =>{
+            console.log("3")
+            resove();
+        }).then(()=>{
+            console.log("4")
+        }).then(()=>{
+            console.log("5")
+        })
+        setTimeout(()=>{
+            console.log("1")
+        },0)
+        console.log("2")
+    </script>
+</body>
+</html>

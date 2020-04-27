@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="D:\vue课程练习\vue.js"></script>
+<body>
+    <div id="app">
+        <span>{{message}}</span><br>
+        <a v-bind:href="url" target="_blank">百度一下</a><br>
+        <img :src="imgUrl"/>
+        <input type="text" v-model="something">
+        <span>{{something}}</span>
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            message:'Hello World',
+            url:'http://www.taobao.com',
+            imgUrl:'../img/jx1.jpg',
+            something:''
+        }
+    })
+</script>
+</html>

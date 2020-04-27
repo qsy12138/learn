@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>数据遍历</title>
+    </head>
+<body>
+    <script>
+        console.log(Array.prototype)
+        //Array.prototype.from
+        function fun() { 
+            //var a = [].slice.call(arguments);//es5，将伪数组转换成数组的方法
+            var a = Array.from(arguments,function(){ return 1})//es6提供的将伪数组转换成数组的方法
+            console.log(a)
+         }
+        fun(1,2,3,4,5);
+        
+        //Array.prototype.of
+        var a = Array.of(7);
+        console.log(a);//区别于Array(7)，Array.of(7)创建的是长度为1、值为7的数组，而Array(7)创建的是长度为7的空数组（这里是指有7个空位符的数组[, , , , , , ]）
+        
+        //Array.prototype.fill
+        let array = [1,2,3,4,5];
+        array.fill(0,1,2)//该方法表示，将数组的第二个元素下标1到数组的第三个元素下标2的元素(也就是数组的第二个元素)，替换成0
+        console.log(array)//注意，这里如果fill里面，不添加初始值和结束值，也就是fill(0)，会将数组的所有元素都替换成0
+        
+        //Array.prototype.find
+        let array2 = [5,12,8,130,44];
+        let found = array2.find(function (item) { 
+            return item>10
+         })
+        console.log(found)//数组的find方法，该方法可以用来查找数组中的值，但是与数组的过滤方法不同，这个方法只会从数组的第一项开始查找，当查到一个符合条件的值的时候，就返回
+
+        //Array.prototype.findIndex
+        let array3 = [5,12,8,130,44];
+        let found1 = array3.findIndex(function (item) { 
+            return item>10
+         })
+        console.log(found1)//与finde类似，但是这里返回的是下标
+    </script>
+</body>    
+</html>

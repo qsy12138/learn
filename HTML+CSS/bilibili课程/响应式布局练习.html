@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="nav">
+        <a href="" class="logo"></a>
+        <a href="" class="text">MAC</a>
+        <a href="" class="text">iPad</a>
+        <a href="" class="text">iPhone</a>
+        <a href="" class="text">iWatch</a>
+        <a href="" class="text">TV</a>
+        <a href="" class="text">Music</a>
+        <a href="" class="text">support</a>
+        <a href="" class="search"></a>
+        <a href="" class="buy"></a>
+        <input hidden="hidden" type="checkbox" name="" id="choose" value=""/>
+        <label for="choose" class="togglebtn">
+            <span class="line"></span>
+            <span class="line"></span>
+        </label>
+        <div class="navback">
+            <div class="navpage">
+                <div class="icon"></div>
+                <input type="text" placeholder="搜索" name="search" />
+            </div>
+            <hr>
+            <div class="navList">
+                <a href="">MAC</a>
+                <a href="">iPad</a>
+                <a href="">iPhone</a>
+                <a href="">iWatch</a>
+                <a href="">Music</a>
+                <a href="">support</a>
+            </div>
+        </div>
+    </div>
+</body>
+<style>
+    /* 注意分析页面是否包含移动端，如果包含一定要加上meta viewport元素 */
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .nav{
+        width: 100%;
+        height: 44px;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .nav a{
+        color: #fff;
+        text-decoration: none;
+        width: 102.4px;
+        text-align: center;
+    }
+    .nav .logo{
+        height: 44px;
+        background-image: url(img/logo.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .nav .search{
+        height: 44px;
+        background-image: url(img/search.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .nav .buy{
+        height: 44px;
+        background-image: url(img/buy.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .togglebtn{
+        height: 44px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .togglebtn .line{
+        height: 1px;
+        width: 18px;
+        background-color: #fff;
+        display: none;
+        margin: 6px;
+    }
+    .navback{
+        display: flex;
+        height: 0vh;
+        background-color: #000;
+        width: 100vw;
+        transition: all 0.8s;
+        overflow: hidden;
+        position: fixed;
+        flex-direction: column;
+        left: 0;
+        top: 0;
+    }
+    /* 响应式布局，小于768像素时的样式 */
+    @media screen and (max-width:768px){
+        .togglebtn .line{
+            display: block;
+            position: relative;
+            z-index: 50;
+        }
+        .logo{
+            position: relative;
+            z-index: 50;
+        }
+        .nav .text, .nav .search{
+            display: none;
+        }
+        .nav{
+            justify-content: space-between;
+        }
+        .nav .a{
+            width: 50px;
+        }
+        .nav .togglebtn{
+            order: 1;
+        }
+        .nav .logo{
+            order: 2;
+        }
+        .nav .buy{
+            order: 3;
+        }
+        #choose:checked~.togglebtn .line:nth-child(1){
+            transform: rotate(45deg);
+            /* 旋转中心点 */
+            transform-origin: left;
+        }
+        #choose:checked~.togglebtn .line:nth-child(2){
+            transform: rotate(-45deg);
+            /* 旋转中心点 */
+            transform-origin: left;
+        }
+        #choose:checked~.navback{
+            display: flex;
+            background-color: #000;
+            height: 100vh;
+            width: 100vw;
+            flex-direction: column;
+            padding-top: 50px;
+        }
+        .navpage{
+            display: flex;
+            margin: 0 20px;
+            height: 36px;
+            border-radius: 4px;
+            background-color: rgba(45,45,45,0.98);
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .navpage .icon{
+            width: 29px;
+            height: 36px;
+            background-image: url(img/search.svg);
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .navpage input{
+            flex: 1;
+            height: 100%;
+            margin: 0 10px;
+            background: none;
+            border: none;
+            outline: none;
+            color: #fff;
+        }
+        hr{
+            margin-top: 10px;
+            color: #333;
+        }
+        .navList{
+            margin: 0 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .navList a{
+            width: 100%;
+            height: 44px;
+            color: #fff;
+            text-align: left;
+            border-bottom: 1px solid #333;
+            line-height: 44px;
+        }
+        .navList a:last-child{
+            border-bottom: none;
+        }
+    }
+</style>
+</html>

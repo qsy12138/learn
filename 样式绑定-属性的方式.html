@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>样式绑定-属性的方式</title>
+    <script src="./vue.js"></script>
+    <style>
+        .activited{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" :class="[activited]" @click="handleClick">Hello World</div>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                activited:''
+            },
+            methods: {
+                handleClick:function(){
+                    this.activited = this.activited === 'activited'?'':'activited'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

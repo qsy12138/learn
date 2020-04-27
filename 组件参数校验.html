@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>组件参数校验</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <child count="1"></child><!--当不使用v-bind或者:时说明是直接传递的一个属性值，也就是字符串，而当使用：或者v-xxx之类的，表明等号后面是一个JS表达式，所以传递的可能是number-->
+    </div>
+    <script>
+        Vue.component('child',{
+            props:{
+                //组件参数校验，在传递时进行校验
+                count:{
+                    //规定传递的参数必须为number类型
+                    type:Number
+                }
+            },
+            template:'<div>{{count}}</div>',
+            
+        })
+        var vm = new Vue({
+            el:'#app',
+        })
+    </script>
+</body>
+</html>

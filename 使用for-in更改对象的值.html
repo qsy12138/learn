@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>for-in更改对象值</title>
+</head>
+<body>
+    <script>
+        let obj = [{title:'响应式布局',category:'css'},
+                   {title:'弹性盒模型',category:'js'},
+                   {title:'数据库操作',category:'oracle'}
+                  ];
+        for (const key in obj) {
+            obj[key].title = `${obj[key].title}钱思远`
+        }
+        console.table(obj);
+    </script>
+</body>
+</html>

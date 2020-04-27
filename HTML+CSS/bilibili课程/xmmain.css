@@ -1,0 +1,172 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+  background-color: rgb(245, 245, 245);  
+}
+.swiper{
+    width: 375px;
+    height: 188px;
+    background-image: url(./img/lunbo1.jpg);
+    background-size: 100% 100%;
+    margin-top: 70px;
+}
+.iconList{
+    width: 375px;
+    height: 160px;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.iconItem{
+    width: 20%;
+    height: 80px;
+}
+.iconItem>img{
+    width: 100%;
+    height: 100%;
+}
+.banner{
+    width: 375px;
+    height: 265px;
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+.banner .leftbanner{
+    background-image: url(./img/mian1.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+}
+.banner .leftbanner,.banner .rightbanner{
+    width: 186px;
+    height: 265px;
+}
+.banner .rightbanner{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.banner .rightbanner .rtopbanner{
+    height: 131px;
+    width: 186px;
+    background-image: url(./img/mian2.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+}
+.banner .rightbanner .rbotbanner{
+    height: 131px;
+    width: 186px;
+    background-image: url(./img/mian3.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+}
+
+/* 精选部分的内容 */
+.jx{
+    margin-top: 8px;
+    width: 375px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    padding-bottom: 60px;
+}
+.jx .jxad{
+    width: 375px;
+    height: 230px;
+    background-image: url(./img/jxTop.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+}
+.jx .pdList{
+    display: flex;
+    flex-wrap: wrap;
+    width: 375px;
+}
+.jx .pdList .pdItem{
+    width: 50%;
+    height: 253px;
+    padding: 3px 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.pdList .pdItem img{
+    width: 100%;
+    height: auto;
+}
+.pdList .pdItem .title{
+    padding-top: 5px;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.87);
+}
+.pdList .pdItem .brice{
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.54);
+}
+.pdList .pdItem .price{
+    font-size: 15px;
+    color: #ea625b;
+}
+.pdList .pdItem .buybtn{
+    width: 105px;
+    height: 31px;
+    text-align: center;
+    line-height: 31px;
+    color: #fff;
+    border-radius: 3px;
+    font-size: 13px;
+    background-color: #ea625b;
+}
+/* 底部导航 */
+.footer{
+    width: 375px;
+    display: flex;
+    background-color: #fff;
+    box-shadow: 0 -2px 10px #ccc;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+.footer .ficon{
+    width: 25%;
+    height: 52px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.footer .ficon span{
+    font-size: 12px;
+    color: #999999;
+}
+.footer .ficon .iimg{
+    width: 21px;
+    height: 21px;
+    background-size: 100%;
+}
+.footer .ficon:nth-child(1) .iimg{
+    background-image: url(./img/home1.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.footer .ficon:nth-child(2) .iimg{
+    background-image: url(./img/fenlei.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.footer .ficon:nth-child(3) .iimg{
+    background-image: url(./img/cart.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.footer .ficon:nth-child(4) .iimg{
+    background-image: url(./img/user.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}

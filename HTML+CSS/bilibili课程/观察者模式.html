@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //观察者/订阅者模式
+    //订阅者模式：当我们希望能够定制自定义事件的时候，通过触发自定义事件，达到将这一系列事先定义好的函数被调用执行
+    var qsyEvent = {
+        event:{
+            
+        },
+        addEvent:function(eventName,fun){
+            if(this.event[eventName]===undefined){
+                this.event[eventName] = []
+            }
+            this.event[eventName].push(fn)
+        },
+        emit:function(eventName,eventMsg){
+           var flist = this.event[eventName]
+           flist.forEach((item) => {
+               item(eventMsg)
+           })
+        }
+    }
+
+</script>
+</html>

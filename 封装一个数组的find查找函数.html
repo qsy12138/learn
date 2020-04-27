@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>封装一个find函数</title>
+</head>
+<body>
+    <script>
+        //自定义封装一个find函数
+        function find(array,callback){
+            for(let value of array){
+                console.log(value)
+                if(callback(value)){
+                    console.log(value)
+                    return value
+                }
+            }
+            return undefined;
+        }
+        let arr = [1,2,3,4,5,6,7];
+        console.log(find(arr,function(item){
+            return item == 3
+        }))
+
+        let arr = [1,5,7,3,4] 
+        /*
+            b-a逆序：
+            5-1正：[5,1,7,3,4]
+            7-1正: [5,7,1,3,4]
+            7-5正: [7,5,1,3,4]
+            5-7负：序列不动
+            1-5负：序列不动
+            3-1正: [7,5,3,1,4]
+            4-1正：[7,5,3,4,1]
+            4-3正：[7,5,4,3,1]       
+        */
+    </script>
+</body>
+</html>
+

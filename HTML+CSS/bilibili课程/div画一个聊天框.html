@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="chatborder">舔狗日记</div>
+</body>
+<style>
+    .chatborder{
+        width: 300px;
+        line-height: 100px;
+        padding: 30px;
+        font-size: 30px;
+        background-color: yellowgreen;
+        margin: 50px auto;
+        border-radius: 30px;
+        position: relative;
+    }
+    .chatborder:before{
+        content: "";
+        display: inline-block;
+        width: 0;
+        height: 0;
+        border-top: 20px solid transparent;
+        border-right: 40px solid yellowgreen;
+        border-left: 40px solid transparent;
+        border-bottom: 20px solid transparent;
+        position: absolute;
+        left: -80px;
+    }
+</style>
+</html>
